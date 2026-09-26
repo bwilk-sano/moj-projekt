@@ -1,0 +1,56 @@
+<% content_for :title, "Notatki" %>
+
+<div class="page-head">
+  <div>
+    <div class="eyebrow"><%= icon :sparkles, size: 14 %> Twoja przestrzeń</div>
+    <h1 class="page-title">Cześć, <span class="gradient-text"><%= Current.user.email_address.split("@").first %></span></h1>
+    <p class="page-sub">
+      <% if @notes.any? %>
+        <%= t(".count", count: @notes.size) %>
+      <% else %>
+        Czysta karta. Idealny moment na pierwszy pomysł.
+      <% end %>
+    </p>
+  </div>
+
+  <%= link_to new_note_path, class: "btn btn--primary" do %>
+    <%= icon :plus %> Nowa notatka
+  <% end %>
+</div>
+
+<% if @notes.any? %>
+  <div data-controller="filter">
+    <div class="toolbar">
+      <label class="search">
+        <%= icon :search %>
+        <input type="search" placeholder="Szukaj w notatkach…" aria-label="Szukaj w notatkach"
+               data-filter-target="input" data-action="input->filter#filter">
+        <kbd>/</kbd>
+      </label>
+    </div>
+
+    <div class="notes-grid">
+      <%= render partial: "note_card", collection: @notes, as: :note %>
+
+      <%= link_to new_note_path, class: "note-card note-card--new" do %>
+        <span class="plus"><%= icon :plus, size: 22 %></span>
+        <span>Dodaj notatkę</span>
+      <% end %>
+    </div>
+
+    <div class="empty" data-filter-target="empty" hidden style="margin-top:18px">
+      <div class="empty__icon"><%= icon :search, size: 28 %></div>
+      <h2>Nic nie znaleziono</h2>
+      <p>Spróbuj innej frazy.</p>
+    </div>
+  </div>
+<% else %>
+  <div class="empty">
+    <div class="empty__icon"><%= icon :note, size: 30 %></div>
+    <h2>Jeszcze nic tu nie ma</h2>
+    <p>Twoje notatki pojawią się tutaj jako kolorowe karty. Zacznij od pierwszej.</p>
+    <%= link_to new_note_path, class: "btn btn--primary", style: "margin-top:8px" do %>
+      <%= icon :plus %> Utwórz pierwszą notatkę
+    <% end %>
+  </div>
+<% end %>

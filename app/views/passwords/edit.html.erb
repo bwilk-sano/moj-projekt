@@ -1,0 +1,26 @@
+<% content_for :title, "Nowe hasło" %>
+
+<h1>Ustaw nowe hasło</h1>
+<p class="lead">Wybierz coś mocnego. Co najmniej 8 znaków.</p>
+
+<%= form_with url: password_path(params[:token]), method: :put do |form| %>
+  <div class="field">
+    <%= form.label :password, "Nowe hasło", class: "label" %>
+    <div class="input-icon">
+      <%= icon :lock %>
+      <%= form.password_field :password, required: true, autocomplete: "new-password",
+            placeholder: "Minimum 8 znaków", minlength: 8, maxlength: 72 %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :password_confirmation, "Powtórz hasło", class: "label" %>
+    <div class="input-icon">
+      <%= icon :lock %>
+      <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password",
+            placeholder: "Powtórz hasło", maxlength: 72 %>
+    </div>
+  </div>
+
+  <%= form.button "Zapisz hasło", class: "btn btn--primary btn--block" %>
+<% end %>

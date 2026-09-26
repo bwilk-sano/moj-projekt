@@ -1,0 +1,41 @@
+<% content_for :title, "Rejestracja" %>
+
+<h1>Załóż konto ✨</h1>
+<p class="lead">Minuta i gotowe. Bez karty, bez haczyków.</p>
+
+<%= render "shared/errors", record: @user %>
+
+<%= form_with model: @user, url: registration_path do |form| %>
+  <div class="field">
+    <%= form.label :email_address, class: "label" %>
+    <div class="input-icon">
+      <%= icon :mail %>
+      <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username",
+            placeholder: "ty@example.com" %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :password, class: "label" %>
+    <div class="input-icon">
+      <%= icon :lock %>
+      <%= form.password_field :password, required: true, autocomplete: "new-password",
+            placeholder: "Minimum 8 znaków", minlength: 8, maxlength: 72 %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :password_confirmation, class: "label" %>
+    <div class="input-icon">
+      <%= icon :lock %>
+      <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password",
+            placeholder: "Powtórz hasło", maxlength: 72 %>
+    </div>
+  </div>
+
+  <%= form.button "Utwórz konto", class: "btn btn--primary btn--block" %>
+<% end %>
+
+<div class="auth-card__foot">
+  Masz już konto? <%= link_to "Zaloguj się", new_session_path %>
+</div>

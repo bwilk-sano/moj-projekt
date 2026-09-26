@@ -1,0 +1,13 @@
+<% content_for :title, "Edycja: #{@note.title}" %>
+
+<div class="narrow">
+  <%= link_to @note, class: "back-link" do %>
+    <%= icon :back, size: 16 %> Wróć do notatki
+  <% end %>
+
+  <div class="panel">
+    <div class="eyebrow"><%= icon :pencil, size: 14 %> Edycja</div>
+    <h1 class="page-title" style="font-size:32px;margin-bottom:28px"><%= @note.title.presence || "Bez tytułu" %></h1>
+    <%= render "form", note: @note %>
+  </div>
+</div>

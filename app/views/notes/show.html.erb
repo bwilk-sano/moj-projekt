@@ -1,0 +1,28 @@
+<% content_for :title, @note.title %>
+
+<div class="narrow">
+  <%= link_to notes_path, class: "back-link" do %>
+    <%= icon :back, size: 16 %> Wszystkie notatki
+  <% end %>
+
+  <article class="panel" id="<%= dom_id @note %>">
+    <span class="meta">
+      <%= icon :clock, size: 13 %>
+      Zmieniono <%= time_ago_in_words(@note.updated_at) %> temu · <%= l @note.created_at, format: :long %>
+    </span>
+    <h1 class="note-view__title"><%= @note.title.presence || "Bez tytułu" %></h1>
+
+    <div class="note-view__body"><%= @note.body %></div>
+
+    <div class="actions">
+      <%= link_to edit_note_path(@note), class: "btn btn--ghost" do %>
+        <%= icon :pencil, size: 16 %> Edytuj
+      <% end %>
+      <span class="spacer"></span>
+      <%= button_to @note, method: :delete, class: "btn btn--danger",
+            form: { data: { turbo_confirm: "Na pewno usunąć tę notatkę?" } } do %>
+        <%= icon :trash, size: 16 %> Usuń
+      <% end %>
+    </div>
+  </article>
+</div>

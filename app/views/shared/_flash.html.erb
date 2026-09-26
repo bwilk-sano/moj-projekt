@@ -1,0 +1,13 @@
+<div class="toasts" aria-live="polite">
+  <% { notice: :check, alert: :alert }.each do |type, icon_name| %>
+    <% if flash[type].present? %>
+      <div class="toast toast--<%= type %>" data-controller="flash" role="status">
+        <span class="toast__icon"><%= icon icon_name, size: 16 %></span>
+        <span class="toast__text"><%= flash[type] %></span>
+        <button type="button" class="toast__close" data-action="flash#dismiss" aria-label="Zamknij">
+          <%= icon :close, size: 14 %>
+        </button>
+      </div>
+    <% end %>
+  <% end %>
+</div>

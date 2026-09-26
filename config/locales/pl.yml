@@ -1,0 +1,38 @@
+pl:
+  activerecord:
+    models:
+      user:
+        one: Użytkownik
+        few: Użytkownicy
+        many: Użytkowników
+        other: Użytkowników
+      note:
+        one: Notatka
+        few: Notatki
+        many: Notatek
+        other: Notatek
+    attributes:
+      user:
+        email_address: Adres e-mail
+        password: Hasło
+        password_confirmation: Potwierdzenie hasła
+      note:
+        title: Tytuł
+        body: Treść
+  notes:
+    index:
+      count:
+        one: "Masz %{count} notatkę. Co dziś zapisujemy?"
+        few: "Masz %{count} notatki. Co dziś zapisujemy?"
+        many: "Masz %{count} notatek. Co dziś zapisujemy?"
+        other: "Masz %{count} notatki. Co dziś zapisujemy?"
+  errors:
+    messages:
+      confirmation: "nie zgadza się z polem %{attribute}"
+  # "1 minutę temu", not "1 minuta temu" — the phrase is always used with "temu"
+  datetime:
+    distance_in_words:
+      x_seconds:
+        one: "1 sekundę"
+      x_minutes:
+        one: "1 minutę"

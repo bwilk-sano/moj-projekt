@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <%= render "shared/head" %>
+  </head>
+
+  <body>
+    <%= render "shared/flash" %>
+
+    <div class="auth">
+      <aside class="auth__showcase">
+        <%= render "shared/brand" %>
+
+        <div>
+          <div class="floating" aria-hidden="true">
+            <div class="floating__card"><strong>Pomysł na weekend</strong><span></span><span></span><span></span></div>
+            <div class="floating__card"><strong>Lista zakupów</strong><span></span><span></span><span></span></div>
+            <div class="floating__card"><strong>Notatki ze spotkania</strong><span></span><span></span></div>
+          </div>
+
+          <div class="auth__pitch">
+            <h2>Twoje myśli,<br>w jednym miejscu.</h2>
+            <p>Zapisuj pomysły, zanim uciekną. Szybko, prosto i ładnie.</p>
+          </div>
+        </div>
+
+        <div class="auth__foot">© <%= Date.current.year %> Moj Projekt</div>
+      </aside>
+
+      <main class="auth__main" style="position:relative">
+        <div class="auth__theme"><%= render "shared/theme_toggle" %></div>
+
+        <div class="auth-card">
+          <div class="auth__mobile-brand"><%= render "shared/brand" %></div>
+          <%= yield %>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+<% if record.errors.any? %>
+  <div class="errors" role="alert">
+    <%= icon :alert %>
+    <div>
+      <strong>Popraw formularz:</strong>
+      <ul>
+        <% record.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>

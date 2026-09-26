@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <%= render "shared/head" %>
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container header__inner">
+        <%= render "shared/brand" %>
+
+        <div class="header__actions">
+          <%= render "shared/theme_toggle" %>
+
+          <% if authenticated? %>
+            <div class="user-chip">
+              <%= avatar_for Current.user %>
+              <span class="user-chip__email"><%= Current.user.email_address %></span>
+              <%= button_to session_path, method: :delete, class: "btn btn--ghost btn--icon",
+                    title: "Wyloguj", "aria-label": "Wyloguj" do %>
+                <%= icon :logout, size: 16 %>
+              <% end %>
+            </div>
+          <% else %>
+            <%= link_to "Zaloguj", new_session_path, class: "btn btn--ghost" %>
+            <%= link_to "Załóż konto", new_registration_path, class: "btn btn--primary" %>
+          <% end %>
+        </div>
+      </div>
+    </header>
+
+    <%= render "shared/flash" %>
+
+    <main class="main">
+      <div class="container">
+        <%= yield %>
+      </div>
+    </main>
+  </body>
+</html>

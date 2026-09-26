@@ -1,0 +1,33 @@
+<% content_for :title, "Logowanie" %>
+
+<h1>Witaj ponownie 👋</h1>
+<p class="lead">Zaloguj się, aby wrócić do swoich notatek.</p>
+
+<%= form_with url: session_path do |form| %>
+  <div class="field">
+    <%= form.label :email_address, "Adres e-mail", class: "label" %>
+    <div class="input-icon">
+      <%= icon :mail %>
+      <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username",
+            placeholder: "ty@example.com", value: params[:email_address] %>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="row-between">
+      <%= form.label :password, "Hasło", class: "label" %>
+      <%= link_to "Nie pamiętasz?", new_password_path, class: "link-subtle" %>
+    </div>
+    <div class="input-icon">
+      <%= icon :lock %>
+      <%= form.password_field :password, required: true, autocomplete: "current-password",
+            placeholder: "••••••••", maxlength: 72 %>
+    </div>
+  </div>
+
+  <%= form.button "Zaloguj się", class: "btn btn--primary btn--block" %>
+<% end %>
+
+<div class="auth-card__foot">
+  Nie masz konta? <%= link_to "Załóż je za darmo", new_registration_path %>
+</div>

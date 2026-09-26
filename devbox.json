@@ -1,0 +1,30 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.18.3/.schema/devbox.schema.json",
+  "packages": [
+    "ruby@3.3",
+    "sqlite@latest",
+    "libyaml@latest",
+    "gh@latest"
+  ],
+  "shell": {
+    "init_hook": [],
+    "scripts": {
+      "setup": [
+        "gem install bundler --conservative --no-document -v \"$(awk '/BUNDLED WITH/{getline; print $1}' Gemfile.lock)\"",
+        "bin/setup --skip-server"
+      ],
+      "server": [
+        "bin/rails server -b 127.0.0.1 -p 3000"
+      ],
+      "test": [
+        "bin/rails test"
+      ],
+      "ci": [
+        "bin/ci"
+      ],
+      "console": [
+        "bin/rails console"
+      ]
+    }
+  }
+}

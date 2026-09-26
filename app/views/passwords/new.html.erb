@@ -1,0 +1,23 @@
+<% content_for :title, "Reset hasła" %>
+
+<h1>Nie pamiętasz hasła?</h1>
+<p class="lead">Podaj adres e-mail, a wyślemy Ci link do ustawienia nowego.</p>
+
+<%= form_with url: passwords_path do |form| %>
+  <div class="field">
+    <%= form.label :email_address, "Adres e-mail", class: "label" %>
+    <div class="input-icon">
+      <%= icon :mail %>
+      <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username",
+            placeholder: "ty@example.com", value: params[:email_address] %>
+    </div>
+  </div>
+
+  <%= form.button "Wyślij link", class: "btn btn--primary btn--block" %>
+<% end %>
+
+<div class="auth-card__foot">
+  <%= link_to new_session_path, class: "back-link", style: "margin:0" do %>
+    <%= icon :back, size: 16 %> Wróć do logowania
+  <% end %>
+</div>

@@ -1,0 +1,13 @@
+<% content_for :title, "Nowa notatka" %>
+
+<div class="narrow">
+  <%= link_to notes_path, class: "back-link" do %>
+    <%= icon :back, size: 16 %> Wszystkie notatki
+  <% end %>
+
+  <div class="panel">
+    <div class="eyebrow"><%= icon :sparkles, size: 14 %> Nowa notatka</div>
+    <h1 class="page-title" style="font-size:32px;margin-bottom:28px">Co masz na myśli?</h1>
+    <%= render "form", note: @note %>
+  </div>
+</div>

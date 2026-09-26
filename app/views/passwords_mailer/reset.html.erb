@@ -1,0 +1,6 @@
+<p>
+  Hasło możesz zmienić na
+  <%= link_to "tej stronie", edit_password_url(@user.password_reset_token) %>.
+
+  Link wygaśnie za <%= distance_of_time_in_words(0, @user.password_reset_token_expires_in) %>.
+</p>

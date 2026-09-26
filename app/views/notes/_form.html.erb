@@ -1,0 +1,20 @@
+<%= form_with(model: note) do |form| %>
+  <%= render "shared/errors", record: note %>
+
+  <div class="field">
+    <%= form.label :title, class: "label" %>
+    <%= form.text_field :title, placeholder: "Np. Pomysł na weekend", autofocus: note.new_record? %>
+  </div>
+
+  <div class="field">
+    <%= form.label :body, class: "label" %>
+    <%= form.textarea :body, placeholder: "Pisz, co Ci w duszy gra…" %>
+  </div>
+
+  <div class="actions actions--end">
+    <%= link_to "Anuluj", (note.persisted? ? note : notes_path), class: "btn btn--ghost" %>
+    <%= form.button class: "btn btn--primary" do %>
+      <%= icon :check, size: 16 %> <%= note.new_record? ? "Zapisz notatkę" : "Zapisz zmiany" %>
+    <% end %>
+  </div>
+<% end %>
